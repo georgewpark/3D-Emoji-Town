@@ -1,0 +1,912 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(#2bcaff, #77d9ff);
+    perspective: 1000px;
+    overflow: hidden;
+    text-align: center;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.rotate-slider {
+    position: absolute;
+    width: 400px;
+    bottom: 20px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.wrapper {
+    --rotate-y: -40deg;
+    transform-style: preserve-3d;
+    transform: rotateX(-35deg) rotateY(var(--rotate-y));
+}
+
+/* Ground */
+
+.ground {
+    position: relative;
+    width: 720px;
+    height: 600px;
+    background-color: #32cd32;
+    border: 1px solid #13b313;
+    transform: rotateX(90deg);
+    transform-style: preserve-3d;
+}
+
+.ground * {
+    position: absolute;
+    vertical-align: middle;
+    transform: rotateX(-90deg);
+    transform-origin: 50% 100% 0;
+}
+
+/* Fix background color clipping problem on Apple Devices*/
+
+.apple-os .ground {
+    background: none;
+    border: none;
+}
+
+.apple-os .ground::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #32cd32;
+    border: 1px solid #13b313;
+    transform: translateZ(-6px);
+}
+
+/* Sky */
+
+.sun {
+    font-size: 70px;
+    transform-origin: initial;
+    transform: translateZ(250px) rotateX(-100deg) rotateY(45deg) rotate(0deg);
+    animation: sun 8s linear infinite;
+}
+
+.cloud {
+    font-size: 70px;
+    opacity: 0.8;
+}
+
+.cloud-1 {
+    transform: translate3d(150px, 150px, 200px) rotateX(-90deg);
+    animation: cloud1 40s ease-in-out infinite;
+}
+
+.cloud-2 {
+    transform: translate3d(500px, 250px, 220px) rotateX(-90deg);
+    animation: cloud2 40s ease-in-out infinite;
+}
+
+/* Roads */
+
+.road {
+    height: 50px;
+    transform-origin: initial;
+    background-image: linear-gradient(#bbb, #bbb 19.9%, #333 20%, #333 80%, #bbb 80.1%);
+}
+
+.road-1 {
+    width: 100%;
+    transform: translateY(60px);
+}
+
+.road-2 {
+    width: 100%;
+    transform: translateY(490px);
+}
+
+.road-3 {
+    width: 400px;
+    transform: translate(-100px, 275px) rotate(90deg);
+}
+
+.road-4 {
+    width: 400px;
+    transform: translate(420px, 275px) rotate(90deg);
+}
+
+.road-5 {
+    width: 490px;
+    transform: translate(115px, 275px);
+}
+
+.road-6 {
+    width: 185px;
+    transform: translate(265px, 382.5px) rotate(90deg);
+}
+
+.road-7 {
+    width: 70px;
+    transform: translate(585px, 540px) rotate(90deg);
+}
+
+/* Buildings */
+
+.house {
+    font-size: 50px;
+    width: 65px;
+}
+
+.house-1{transform:translateX(20px) rotateX(-90deg)}.house-2{transform:translateX(80px) rotateX(-90deg)}.house-3{transform:translateX(142px) rotateX(-90deg)}.house-4{transform:translateX(205px) rotateX(-90deg)}.house-5{transform:translateX(265px) rotateX(-90deg)}.house-6{transform:translateX(328px) rotateX(-90deg)}.house-7{transform:translateX(388px) rotateX(-90deg)}.house-8{transform:translateX(450px) rotateX(-90deg)}.house-9{transform:translateX(512px) rotateX(-90deg)}.house-10{transform:translateX(574px) rotateX(-90deg)}.house-11{transform:translateX(635px) rotateX(-90deg)}.house-12{transform:translate(140px,70px) rotateX(-90deg) rotateY(180deg)}.house-13{transform:translate(200px,70px) rotateX(-90deg) rotateY(180deg)}.house-14{transform:translate(262px,70px) rotateX(-90deg) rotateY(180deg)}.house-15{transform:translate(324px,70px) rotateX(-90deg) rotateY(180deg)}.house-16{transform:translate(385px,70px) rotateX(-90deg) rotateY(180deg)}.house-17{transform:translate(447px,70px) rotateX(-90deg) rotateY(180deg)}.house-18{transform:translate(508px,70px) rotateX(-90deg) rotateY(180deg)}.house-19{transform:translate(550px,175px) rotateX(-90deg) rotateY(90deg)}.house-20{transform:translate(550px,115px) rotateX(-90deg) rotateY(90deg)}.house-21{transform:translate(102px,115px) rotateX(-90deg) rotateY(-90deg)}.house-22{transform:translate(102px,180px) rotateX(-90deg) rotateY(-90deg)}.house-23{transform:translate(135px,215px) rotateX(-90deg)}.house-24{transform:translate(197px,215px) rotateX(-90deg)}.house-25{transform:translate(260px,215px) rotateX(-90deg)}.house-26{transform:translate(328px,215px) rotateX(-90deg)}.house-27{transform:translate(390px,215px) rotateX(-90deg)}.house-28{transform:translate(458px,215px) rotateX(-90deg)}.house-29{transform:translate(526px,215px) rotateX(-90deg)}.house-30{transform:translate(35px,280px) rotateX(-90deg) rotateY(90deg)}.house-31{transform:translate(35px,215px) rotateX(-90deg) rotateY(90deg)}.house-32{transform:translate(35px,155px) rotateX(-90deg) rotateY(90deg)}.house-33{transform:translate(35px,94px) rotateX(-90deg) rotateY(90deg)}.house-34{transform:translate(130px,285px) rotateX(-90deg) rotateY(-180deg)}.house-35{transform:translate(197px,285px) rotateX(-90deg) rotateY(-180deg)}.house-36{transform:translate(258px,285px) rotateX(-90deg) rotateY(-180deg)}.house-37{transform:translate(390px,285px) rotateX(-90deg) rotateY(-180deg)}.house-38{transform:translate(450px,285px) rotateX(-90deg) rotateY(-180deg)}.house-39{transform:translate(518px,285px) rotateX(-90deg) rotateY(-180deg)}.house-40{transform:translate(102px,322px) rotateX(-90deg) rotateY(-90deg)}.house-41{transform:translate(102px,390px) rotateX(-90deg) rotateY(-90deg)}.house-42{transform:translate(288px,385px) rotateX(-90deg) rotateY(90deg)}.house-43{transform:translate(288px,320px) rotateX(-90deg) rotateY(90deg)}.house-44{transform:translate(360px,325px) rotateX(-90deg) rotateY(-90deg)}.house-45{transform:translate(360px,385px) rotateX(-90deg) rotateY(-90deg)}.house-46{transform:translate(552px,388px) rotateX(-90deg) rotateY(90deg)}.house-47{transform:translate(552px,320px) rotateX(-90deg) rotateY(90deg)}
+
+.apartment {
+    font-size: 60px;
+    width: 85px;
+}
+
+.apartment-1 {
+    transform: translate(610px, 98px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.apartment-2 {
+    transform: translate(610px, 180px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.apartment-3 {
+    transform: translate(610px, 262px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.apartment-4 {
+    transform: translate(195px, 490px) rotateX(-90deg) rotateY(-180deg);
+}
+
+.apartment-5 {
+    transform: translate(115px, 490px) rotateX(-90deg) rotateY(-180deg);
+}
+
+.school {
+    font-size: 70px;
+    transform: translate(20px, 360px) rotateX(-90deg) rotateY(90deg);
+}
+
+.convenience-store {
+    font-size: 70px;
+    width: 96px;
+    transform: translate(605px, 360px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.department-store {
+    font-size: 70px;
+    width: 96px;
+    transform: translate(490px, 410px) rotateX(-90deg);
+}
+
+.bank {
+    font-size: 70px;
+    width: 96px;
+    transform: translate(390px, 410px) rotateX(-90deg);
+}
+
+.post-office {
+    font-size: 60px;
+    width: 82px;
+    transform: translate(395px, 490px) rotateX(-90deg) rotateY(-180deg);
+}
+
+.hospital {
+    font-size: 70px;
+    width: 94px;
+    transform: translate(230px, 410px) rotateX(-90deg);
+}
+
+.church {
+    font-size: 65px;
+    width: 90px;
+    transform: translate(130px, 415px) rotateX(-90deg);
+}
+
+.synagogue {
+    font-size: 70px;
+    width: 96px;
+    transform: translate(490px, 480px) rotateX(-90deg) rotateY(-180deg);
+}
+
+.mosque {
+    font-size: 70px;
+    width: 92px;
+    transform: translate(290px, 480px) rotateX(-90deg) rotateY(-180deg);
+}
+
+.factory {
+    font-size: 80px;
+    width: 110px;
+    transform: translateY(470px) rotateX(-90deg) rotateY(-180deg);
+}
+
+/* Props */
+
+.bus-stop {
+    font-size: 20px;
+    transform: translate(650px, 520px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.bus-stop-1 {
+    transform: translate(650px, 520px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.bus-stop-2 {
+    transform: translate(190px, 520px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.bus-stop-3 {
+    transform: translate(40px, 470px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.bus-stop-4 {
+    transform: translate(480px, 470px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.bus-stop-5 {
+    transform: translate(675px, 90px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.bus-stop-6 {
+    transform: translate(55px, 42px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.fuel-pump {
+    font-size: 15px;
+}
+
+.fuel-pump-1 {
+    transform: translate(660px, 465px) rotateX(-90deg);
+}
+
+.fuel-pump-2 {
+    transform: translate(678px, 465px) rotateX(-90deg);
+}
+
+.fuel-pump-3 {
+    transform: translate(696px, 465px) rotateX(-90deg);
+}
+
+.fountain {
+    font-size: 20px;
+    transform: translate(670px, 550px) rotateX(-90deg) rotateY(calc(var(--rotate-y) * -1));
+}
+
+.fire {
+    font-size: 12px;
+}
+
+.fire-1 {
+    transform: translate(640px, 550px) rotateX(-90deg) rotateY(90deg) scale(1);
+    animation: fire1 3s ease-in-out infinite;
+}
+
+.fire-2 {
+    font-size: 8px;
+    transform: translate(645px, 560px) rotateX(-90deg) rotateY(90deg) scale(1);
+    animation: fire2 3s 300ms ease-in-out infinite;
+}
+
+.fire-3 {
+    font-size: 8px;
+    transform: translate(645px, 550px) rotateX(-90deg) rotateY(90deg) scale(1);
+    animation: fire3 3s 600ms ease-in-out infinite;
+}
+
+/* Trees */
+
+.tree {
+    font-size: 32px;
+    width: 40px;
+}
+
+.tree-1{transform:translate(194px,-26px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-2{transform:translate(164px,-21px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-3{transform:translate(344px,-1px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-4{transform:translate(495px,-28px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-5{transform:translate(75px,-4px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-6{transform:translate(398px,-16px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-7{transform:translate(22px,-25px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-8{transform:translate(245px,4px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-9{transform:translate(607px,-1px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-10{transform:translate(97px,0px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-11{transform:translate(141px,0) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-12{transform:translate(649px,1px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-13{transform:translate(619px,-23px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-14{transform:translate(468px,-15px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-15{transform:translate(182px,-17px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-16{transform:translate(273px,-4px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-17{transform:translate(552px,0px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-18{transform:translate(40px,5px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-19{transform:translate(552px,-23px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-20{transform:translate(435px,1px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-21{transform:translate(-8px,420px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-22{transform:translate(16px,318px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-23{transform:translate(-11px,235px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-24{transform:translate(1px,111px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-25{transform:translate(17px,100px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-26{transform:translate(-8px,156px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-27{transform:translate(12px,400px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-28{transform:translate(26px,215px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-29{transform:translate(28px,155px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-30{transform:translate(2px,346px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-31{transform:translate(7px,274px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-32{transform:translate(1px,265px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-33{transform:translate(650px,109px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-34{transform:translate(688px,294px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-35{transform:translate(650px,286px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-36{transform:translate(670px,246px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-37{transform:translate(668px,103px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-38{transform:translate(658px,188px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-39{transform:translate(688px,118px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-40{transform:translate(685px,210px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-41{transform:translate(684px,151px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-43{transform:translate(489px,199px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-44{transform:translate(261px,147px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-45{transform:translate(248px,123px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-46{transform:translate(406px,192px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-47{transform:translate(280px,147px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-48{transform:translate(409px,199px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-49{transform:translate(222px,137px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-50{transform:translate(311px,193px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-51{transform:translate(448px,159px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-52{transform:translate(514px,136px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-53{transform:translate(174px,149px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-54{transform:translate(201px,175px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-55{transform:translate(261px,178px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-56{transform:translate(410px,157px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-57{transform:translate(192px,160px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-58{transform:translate(504px,197px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-59{transform:translate(173px,207px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-60{transform:translate(270px,204px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-61{transform:translate(488px,172px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-62{transform:translate(376px,185px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-63{transform:translate(514px,193px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-64{transform:translate(463px,122px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-65{transform:translate(335px,121px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-66{transform:translate(238px,397px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-67{transform:translate(207px,377px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-68{transform:translate(143px,382px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-69{transform:translate(172px,338px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-70{transform:translate(193px,361px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-71{transform:translate(245px,430px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-72{transform:translate(253px,347px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-73{transform:translate(206px,421px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-74{transform:translate(280px,375px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-75{transform:translate(452px,353px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-76{transform:translate(514px,411px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-77{transform:translate(460px,422px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-78{transform:translate(420px,420px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-79{transform:translate(523px,355px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-80{transform:translate(408px,372px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-81{transform:translate(433px,336px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-82{transform:translate(407px,344px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-83{transform:translate(488px,394px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-84{transform:translate(469px,333px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-85{transform:translate(415px,536px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-86{transform:translate(385px,537px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-87{transform:translate(535px,542px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-88{transform:translate(488px,534px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-89{transform:translate(471px,558px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-90{transform:translate(459px,555px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-91{transform:translate(301px,535px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-92{transform:translate(82px,537px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-93{transform:translate(189px,554px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-94{transform:translate(409px,532px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-95{transform:translate(510px,536px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-96{transform:translate(35px,559px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-97{transform:translate(144px,534px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-98{transform:translate(303px,549px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-99{transform:translate(27px,552px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-100{transform:translate(168px,548px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-101{transform:translate(202px,535px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-102{transform:translate(536px,557px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-103{transform:translate(254px,558px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-104{transform:translate(111px,556px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-105{transform:translate(645px,556px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}.tree-106{transform:translate(685px,518px) rotateX(-90deg) rotateY(calc(var(--rotate-y)*-1))}
+
+
+/* Vehicles */
+
+.bicycle {
+    font-size: 15px;
+    transform: translate(340px, 470px) rotateX(-90deg) rotateY(-90deg);
+    animation: bicycle 10s ease-in-out infinite;
+}
+
+.motorcycle {
+    font-size: 20px;
+    transform: translate(95px, 110px) rotateX(-90deg) rotateY(90deg);
+    animation: motorcycle 10s ease-in-out infinite;
+}
+
+.car {
+    font-size: 30px;
+}
+
+.car-1 {
+    transform: translate(650px, 65px) rotateX(-90deg);
+    animation: car 17s ease-in-out infinite;
+}
+
+.car-2 {
+    transform: translate(665px, 430px) rotateX(-90deg);
+}
+
+.car-3 {
+    transform: translate(665px, 410px) rotateX(-90deg);
+}
+
+.car-4 {
+    transform: translate(665px, 370px) rotateX(-90deg);
+}
+
+.taxi {
+    font-size: 30px;
+}
+
+.taxi-1 {
+    transform: translate(20px, 45px) rotateX(-90deg) rotateY(180deg);
+    animation: taxi 17s ease-in-out infinite;
+}
+
+.taxi-2 {
+    transform: translate(665px, 390px) rotateX(-90deg);
+}
+
+.police-car {
+    font-size: 30px;
+    transform: translate(590px, 440px) rotateX(-90deg) rotateY(-90deg);
+    animation: policeCar 12s ease-in-out infinite;
+}
+
+.minivan {
+    font-size: 30px;
+    transform: translate(70px, 440px) rotateX(-90deg) rotateY(-90deg);
+    animation: minivan 10s ease-in-out infinite;
+}
+
+.ambulance {
+    font-size: 30px;
+    transform: translate(275px, 455px) rotateX(-90deg);
+}
+
+.bus {
+    font-size: 35px;
+}
+
+.bus-1 {
+    transform: translate(650px, 490px) rotateX(-90deg);
+    animation: bus1 18s ease-in-out infinite;
+}
+
+.bus-2 {
+    transform: translate(20px, 470px) rotateX(-90deg) rotateY(180deg);
+    animation: bus2 18s ease-in-out infinite;
+}
+
+.truck {
+    font-size: 35px;
+}
+
+.delivery-truck {
+    transform: translate(120px, 255px) rotateX(-90deg) rotateY(180deg);
+    animation: deliveryTruck 15s ease-in-out infinite;
+}
+
+.articulated-truck {
+    width: 60px;
+    transform: translate(600px, 100px) rotateX(-90deg) rotateY(90deg);
+    animation: articulatedTruck 12s ease-in-out infinite;
+}
+
+.fire-truck {
+    transform: translate(605px, 532px) rotateX(-90deg) rotateY(-90deg);
+}
+
+.helicopter {
+    font-size: 30px;
+    transform: translate3d(100px, 100px, 200px) rotateX(-90deg) rotateY(45deg);
+    animation: helicopter 25s ease-in-out infinite;
+}
+
+/* People */
+
+.person {
+    font-size: 15px;
+}
+
+.person-1 {
+    transform: translate(20px, 52px) rotateX(-90deg) rotateY(180deg);
+    animation: person1 30s linear infinite;
+}
+
+.person-2 {
+    transform: translate(632px, 100px) rotateX(-90deg) rotateY(90deg);
+    animation: person2 25s linear infinite;
+}
+
+.person-3 {
+    transform: translate(130px, 265px) rotateX(-90deg) rotateY(180deg);
+    animation: person3 28s linear infinite;
+}
+
+.person-4 {
+    transform: translate(680px, 480px) rotateX(-90deg);
+    animation: person4 45s linear infinite;
+}
+
+.person-5 {
+    transform: translate(110px, 470px) rotateX(-90deg) rotateY(-90deg);
+    animation: person5 30s linear infinite;
+}
+
+.person-6 {
+    transform: translate(20px, 520px) rotateX(-90deg) rotateY(180deg);
+    animation: person6 40s linear infinite;
+}
+
+.couple-1 {
+    transform: translate(670px, 520px) rotateX(-90deg) rotateY(180deg);
+}
+
+.couple-2 {
+    transform: translate(320px, 360px) rotateX(-90deg) rotateY(90deg);
+}
+
+.couple-3 {
+    transform: translate(580px, 150px) rotateX(-90deg) rotateY(90deg);
+}
+
+/* Animals */
+
+.dog {
+    font-size: 10px;
+}
+
+.dog-1 {
+    transform: translate(40px, 55px) rotateX(-90deg) rotateY(180deg);
+    animation: dog1 30s linear infinite;
+}
+
+.dog-2 {
+    transform: translate(150px, 265px) rotateX(-90deg) rotateY(180deg);
+    animation: dog2 28s linear infinite;
+}
+
+.cat {
+    font-size: 8px;
+}
+
+.cat-1 {
+    transform: translate(580px, 310px) rotateX(-90deg);
+    animation: cat1 40s linear infinite;
+}
+
+.cat-2 {
+    transform: translate(75px, 110px) rotateX(-90deg) rotateY(90deg);
+    animation: cat2 30s linear infinite;
+}
+
+/* Animations */
+
+@keyframes sun {
+    100% {
+        transform: translateZ(250px) rotateX(-100deg) rotateY(45deg) rotate(360deg);
+    }
+}
+
+@keyframes cloud1 {
+    50% {
+        transform: translate3d(500px, 150px, 200px) rotateX(-90deg);
+    }
+}
+
+@keyframes cloud2 {
+    50% {
+        transform: translate3d(150px, 250px, 200px) rotateX(-90deg);
+    }
+}
+
+@keyframes fire1 {
+    50% {
+        transform: translate(640px, 550px) rotateX(-90deg) rotateY(90deg) scale(0.7)
+    }
+}
+
+@keyframes fire2 {
+    50% {
+        transform: translate(645px, 560px) rotateX(-90deg) rotateY(90deg) scale(0.7)
+    }
+}
+
+@keyframes fire3 {
+    50% {
+        transform: translate(645px, 550px) rotateX(-90deg) rotateY(90deg) scale(0.7)
+    }
+}
+
+@keyframes car {
+    40% {
+        transform: translate(2px, 65px) rotateX(-90deg);
+    }
+
+    50% {
+        transform: translate(20px, 45px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    90% {
+        transform: translate(650px, 45px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    100% {
+        transform: translate(650px, 65px) rotateX(-90deg) rotateY(0deg);
+    }
+}
+
+@keyframes taxi {
+    40% {
+        transform: translate(650px, 45px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(650px, 65px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    90% {
+        transform: translate(20px, 65px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(20px, 45px) rotateX(-90deg) rotateY(-180deg);
+    }
+}
+
+@keyframes policeCar {
+    40% {
+        transform: translate(590px, 100px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    50% {
+        transform: translate(610px, 100px) rotateX(-90deg) rotateY(-270deg);
+    }
+
+    90% {
+        transform: translate(610px, 440px) rotateX(-90deg) rotateY(-270deg);
+    }
+
+    100% {
+        transform: translate(590px, 440px) rotateX(-90deg) rotateY(-450deg);
+    }
+}
+
+@keyframes deliveryTruck {
+    40% {
+        transform: translate(550px, 255px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(550px, 270px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    90% {
+        transform: translate(120px, 270px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(120px, 255px) rotateX(-90deg) rotateY(-180deg);
+    }
+}
+
+@keyframes articulatedTruck {
+    40% {
+        transform: translate(600px, 430px) rotateX(-90deg) rotateY(90deg);
+    }
+
+    50% {
+        transform: translate(580px, 430px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    90% {
+        transform: translate(580px, 100px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    100% {
+        transform: translate(600px, 100px) rotateX(-90deg) rotateY(-270deg);
+    }
+}
+
+@keyframes bus1 {
+    40% {
+        transform: translate(0px, 490px) rotateX(-90deg);
+    }
+
+    50% {
+        transform: translate(20px, 470px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    90% {
+        transform: translate(650px, 470px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    100% {
+        transform: translate(650px, 490px) rotateX(-90deg) rotateY(0deg);
+    }
+}
+
+@keyframes bus2 {
+    40% {
+        transform: translate(650px, 470px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(650px, 490px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    90% {
+        transform: translate(20px, 490px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(20px, 470px) rotateX(-90deg) rotateY(-180deg);
+    }
+}
+
+@keyframes bicycle {
+    40% {
+        transform: translate(340px, 320px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    50% {
+        transform: translate(355px, 320px) rotateX(-90deg) rotateY(-270deg);
+    }
+
+    90% {
+        transform: translate(355px, 470px) rotateX(-90deg) rotateY(-270deg);
+    }
+
+    100% {
+        transform: translate(340px, 470px) rotateX(-90deg) rotateY(-450deg);
+    }
+}
+
+@keyframes motorcycle {
+    40% {
+        transform: translate(95px, 460px) rotateX(-90deg) rotateY(90deg);
+    }
+
+    50% {
+        transform: translate(80px, 460px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    90% {
+        transform: translate(80px, 110px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    100% {
+        transform: translate(95px, 110px) rotateX(-90deg) rotateY(-270deg);
+    }
+}
+
+@keyframes minivan {
+    40% {
+        transform: translate(70px, 100px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    50% {
+        transform: translate(90px, 100px) rotateX(-90deg) rotateY(-270deg);
+    }
+
+    90% {
+        transform: translate(90px, 440px) rotateX(-90deg) rotateY(-270deg);
+    }
+
+    100% {
+        transform: translate(70px, 440px) rotateX(-90deg) rotateY(-450deg);
+    }
+}
+
+@keyframes helicopter {
+    20% {
+        transform: translate3d(100px, 500px, 180px) rotateX(-90deg) rotateY(135deg);
+    }
+
+    50% {
+        transform: translate3d(600px, 500px, 200px) rotateX(-90deg) rotateY(225deg);
+    }
+
+    70% {
+        transform: translate3d(600px, 100px, 180px) rotateX(-90deg) rotateY(315deg);
+    }
+
+    100% {
+        transform: translate3d(100px, 100px, 200px) rotateX(-90deg) rotateY(405deg)
+    }
+}
+
+@keyframes person1 {
+    45% {
+        transform: translate(600px, 52px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(600px, 52px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    95% {
+        transform: translate(20px, 52px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(20px, 52px) rotateX(-90deg) rotateY(-180deg);
+    }
+}
+
+@keyframes person2 {
+    45% {
+        transform: translate(632px, 460px) rotateX(-90deg) rotateY(90deg);
+    }
+
+    50% {
+        transform: translate(632px, 460px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    95% {
+        transform: translate(632px, 100px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    100% {
+        transform: translate(632px, 100px) rotateX(-90deg) rotateY(-270deg);
+    }
+}
+
+@keyframes person3 {
+    45% {
+        transform: translate(530px, 265px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(530px, 265px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    95% {
+        transform: translate(130px, 265px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(130px, 265px) rotateX(-90deg) rotateY(-180deg);
+    }
+}
+
+@keyframes person4 {
+    45% {
+        transform: translate(20px, 480px) rotateX(-90deg);
+    }
+
+    50% {
+        transform: translate(20px, 480px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    95% {
+        transform: translate(680px, 480px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    100% {
+        transform: translate(680px, 480px) rotateX(-90deg) rotateY(0deg);
+    }
+}
+
+@keyframes person5 {
+    45% {
+        transform: translate(110px, 100px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    50% {
+        transform: translate(110px, 100px) rotateX(-90deg) rotateY(-270deg);
+    }
+
+    95% {
+        transform: translate(110px, 470px) rotateX(-90deg) rotateY(-270deg);
+    }
+
+    100% {
+        transform: translate(110px, 470px) rotateX(-90deg) rotateY(-450deg);
+    }
+}
+
+@keyframes person6 {
+    45% {
+        transform: translate(580px, 520px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(580px, 520px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    95% {
+        transform: translate(20px, 520px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(20px, 520px) rotateX(-90deg) rotateY(-180deg);
+    }
+}
+
+@keyframes dog1 {
+    45% {
+        transform: translate(580px, 55px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(580px, 55px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    95% {
+        transform: translate(40px, 55px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(40px, 55px) rotateX(-90deg) rotateY(-180deg);
+    }
+}
+
+@keyframes dog2 {
+    45% {
+        transform: translate(510px, 265px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    50% {
+        transform: translate(510px, 265px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    95% {
+        transform: translate(150px, 265px) rotateX(-90deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: translate(150px, 265px) rotateX(-90deg) rotateY(-180deg);
+    }
+}
+
+@keyframes cat1 {
+    45% {
+        transform: translate(130px, 310px) rotateX(-90deg);
+    }
+
+    50% {
+        transform: translate(130px, 310px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    95% {
+        transform: translate(580px, 310px) rotateX(-90deg) rotateY(180deg);
+    }
+
+    100% {
+        transform: translate(580px, 310px) rotateX(-90deg) rotateY(0deg);
+    }
+}
+
+@keyframes cat2 {
+    45% {
+        transform: translate(75px, 470px) rotateX(-90deg) rotateY(90deg);
+    }
+
+    50% {
+        transform: translate(75px, 470px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    95% {
+        transform: translate(75px, 110px) rotateX(-90deg) rotateY(-90deg);
+    }
+
+    100% {
+        transform: translate(75px, 110px) rotateX(-90deg) rotateY(-270deg);
+    }
+}
