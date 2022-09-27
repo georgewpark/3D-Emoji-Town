@@ -4,7 +4,7 @@ This project demonstrates how pure CSS can be used to create an animated 3D emoj
 ![3D Emoji Town Demo](demo-gif.gif "3D Emoji Town Demo")
 
 ## Live Demo
-A live demo is available on [CodePen](https://codepen.io/GeorgePark/full/MqVoYP/).
+A live demo is available on [CodePen](https://codepen.io/GeorgePark/full/MqVoYP/) and [Netlify](https://3d-emoji-town.netlify.app/).
 
 ## License
 This project is licensed under the MIT License - see the [license.md](license.md) file for details.
